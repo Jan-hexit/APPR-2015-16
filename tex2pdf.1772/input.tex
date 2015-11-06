@@ -1,0 +1,216 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\ErrorTok}[1]{\textbf{{#1}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{longtable,booktabs}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Jan Perme},
+            pdftitle={Porocilo pri predmetu Analiza podatkov s programom R},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Porocilo pri predmetu Analiza podatkov s programom R}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Jan Perme}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \date{}
+  \predate{}\postdate{}
+
+\usepackage[slovene]{babel}
+\usepackage{graphicx}
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{Izbira teme}\label{izbira-teme}
+
+Za vzorec bomo prikazali nekaj podatkov o slovenskih obcinah.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{Obdelava, uvoz in cicenje
+podatkov}\label{obdelava-uvoz-in-cicenje-podatkov}
+
+Uvozili smo podatke o obcinah v obliki CSV s statisticnega urada ter v
+obliki HTML z Wikipedije. Poglejmo si zacetka obeh uvoenih
+razpredelnic.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(druzine))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[c]{@{}lrrrr@{}}
+\toprule
+& en & dva & tri & stiri\tabularnewline
+\midrule
+\endhead
+Ajdovšcina & 1933 & 1567 & 441 & 101\tabularnewline
+Apace & 512 & 248 & 43 & 5\tabularnewline
+Beltinci & 949 & 744 & 132 & 18\tabularnewline
+Benedikt & 226 & 227 & 44 & 20\tabularnewline
+Bistrica ob Sotli & 163 & 118 & 31 & 4\tabularnewline
+Bled & 934 & 655 & 127 & 17\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(obcine)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Povrina (kv. km) t. preb. t. preb. (kv. km)
+## Ajdovcina                     2452    18.651                 76
+## Ankaran                          80     2.984                373
+## Apace                           535     3.745                 70
+## Beltinci                        623     8.650                139
+## Benedikt                        241     2.330                 97
+## Bistrica ob Sotli               311     1.516                 49
+##                   t. naselij Ustanovitev (leto) Pokrajina
+## Ajdovcina                 45                 NA Primorska
+## Ankaran                     1               2011 Primorska
+## Apace                      21               2006 tajerska
+## Beltinci                    8               1994 Prekmurje
+## Benedikt                   14               1998 tajerska
+## Bistrica ob Sotli          11               1998 tajerska
+##                   Statisticna regija               Odcepitev (od obcine)
+## Ajdovcina                   Gorika                                <NA>
+## Ankaran                Obalno-kraka                               Koper
+## Apace                       Pomurska                      Gornja Radgona
+## Beltinci                    Pomurska                       Murska Sobota
+## Benedikt                   Podravska Lenart (nekoc e samostojna obcina)
+## Bistrica ob Sotli          Savinjska                          Podcetrtek
+\end{verbatim}
+
+Slika \ref{fig:histogram} prikazuje porazdelitev tevila naselij v
+obcinah.
+
+\begin{figure}
+
+{\centering \includegraphics{projekt_files/figure-latex/histogram-1} 
+
+}
+
+\caption{Histogram <U+009A>tevila naselij v obcinah}\label{fig:histogram}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{Analiza in vizualizacija
+podatkov}\label{analiza-in-vizualizacija-podatkov}
+
+Slika \ref{fig:zemljevid} prikazuje povprecno velikost druine za vsako
+obcino.
+
+\begin{figure}
+
+{\centering \includegraphics{projekt_files/figure-latex/zemljevid-1} 
+
+}
+
+\caption{Zemljevid povprecnega <U+009A>tevila otrok v dru<U+009E>ini}\label{fig:zemljevid}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{Napredna analiza podatkov}\label{napredna-analiza-podatkov}
+
+Slika \ref{fig:graf} prikazuje povezavo med tevilom naselij in povrino
+obcine.
+
+\begin{figure}
+
+{\centering \includegraphics{projekt_files/figure-latex/graf-1} 
+
+}
+
+\caption{Povezava med <U+009A>tevilom naselij in povr<U+009A>ino obcine}\label{fig:graf}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\end{document}
