@@ -6,8 +6,9 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2015/16.
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+Ukvarjal se bom z analizo kazinojev v Združenem kraljestvu. Zanimalo me bo porast števila igralcev in kazinojev, v katerih igrah kazino pobere največji dobiček rast dobičko, število kazinojev in igralnih miz. Gledal bom tudi v katerih regijah igra igre na srečo največ ljudi.
+Vir: http://www.gamblingcommission.gov.uk/Gambling-data-analysis/statistics/Industry-statistics.aspx
+V mapo podatki pa bom dodal še html stran ki sem jo pretvoril iz pdfja dobljenega na http://www.gamblingcommission.gov.uk/Gambling-data-analysis/statistics/Casino-drop-and-win-data.aspx
 
 ## Program
 
