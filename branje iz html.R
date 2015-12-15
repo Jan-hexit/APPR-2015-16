@@ -10,3 +10,9 @@ colnames(tabela)<-c("Panoga","Moski","Zenske")
 tabela<-tabela[-1,]
 tabela<-t(tabela)
 
+
+url <- "podatki/Drop-and-win-summary-report.htm"
+stran <-read_html(url,encoding="UTF-8")
+drzave <- stran %>% html_nodes(xpath ="//table[1]") %>% .[[2]] %>% html_table(fill = TRUE)
+
+
