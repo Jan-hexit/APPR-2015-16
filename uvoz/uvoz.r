@@ -76,3 +76,4 @@ imena_miz<-profit[,1]
 profit<-profit[,-1]
 profit <- apply(profit,2,function(x) as.numeric(gsub(",",".",gsub("\\.","",x))))
 rownames(profit) <- imena_miz
+
