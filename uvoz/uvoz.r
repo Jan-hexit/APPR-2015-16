@@ -22,6 +22,7 @@ require(dplyr)
 require(rvest)
 require(gsubfn)
 library(reshape2)
+library(ggplot2)
 
 url <- "http://www.casinonewsdaily.com/2015/05/13/united-kingdom-gambling-market-development/"
 stran <- html_session(url) %>% read_html(encoding="UTF-8")
@@ -76,4 +77,14 @@ imena_miz<-profit[,1]
 profit<-profit[,-1]
 profit <- apply(profit,2,function(x) as.numeric(gsub(",",".",gsub("\\.","",x))))
 rownames(profit) <- imena_miz
+
+dobicek <- data.frame()
+dobicek <- profit/vlozki
+rownames(dobicek) <- imena_miz
+colnames(dobicek) <- colnames(profit)
+
+dobicek_na_mizo <- data.frame()
+dobicek_na_mizo <- profit/st_miz
+rownames(dobicek_na_mizo) <- imena_miz
+colnames(dobicek_na_mizo) <- colnames(profit)
 
