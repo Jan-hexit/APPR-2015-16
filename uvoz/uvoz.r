@@ -88,3 +88,5 @@ dobicek_na_mizo <- profit/st_miz
 rownames(dobicek_na_mizo) <- imena_miz
 colnames(dobicek_na_mizo) <- colnames(profit)
 
+ggplot(drzave)
+
