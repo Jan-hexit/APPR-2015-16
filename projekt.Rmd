@@ -25,7 +25,7 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo=FALSE}
+```{r uvoz, echo=FALSE,message=False, warning=FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
@@ -46,40 +46,3 @@ hist(obcine[,4], main = "Pogostost števila naselij",
 
 ***
 
-# Analiza in vizualizacija podatkov
-
-```{r vizualizacija, echo=FALSE}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
-```
-
-Slika \ref{fig:zemljevid} prikazuje povprečno velikost družine za vsako občino.
-
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-n <- 100
-barve <- topo.colors(n)[1+(n-1)*(druzine$povprecje-min.povprecje)/(max.povprecje-min.povprecje)]
-plot(zemljevid, col = barve)
-title("Povprečno število otrok v družini")
-```
-
-***
-
-# Napredna analiza podatkov
-
-```{r analiza, echo=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
-
-Slika \ref{fig:graf} prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-plot(obcine[[1]], obcine[[4]],
-     main = "Število naselij glede na površino občine",
-     xlab = expression("Površina (km"^2 * ")"),
-     ylab = "Št. naselij",
-     col = barve[obcine[[7]]],
-     pch = 18)
-legend("topright", legend = names(barve), col = barve,
-       pch = 18, cex = 0.5, bg = "white")
-```
-
-***

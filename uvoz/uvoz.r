@@ -87,6 +87,19 @@ dobicek_na_mizo <- data.frame()
 dobicek_na_mizo <- profit/st_miz
 rownames(dobicek_na_mizo) <- imena_miz
 colnames(dobicek_na_mizo) <- colnames(profit)
+profit <- data.frame(profit)
+colnames(profit)<-colnames(st_miz)
+vlozki <- data.frame(vlozki)
+colnames(vlozki)<-colnames(st_miz)
+dobicek <- data.frame(dobicek)
+colnames(dobicek)<-colnames(st_miz)
+dobicek_na_mizo <- data.frame(dobicek_na_mizo)
+colnames(dobicek_na_mizo)<-colnames(st_miz)
+st_miz <- data.frame(st_miz)
+colnames(st_miz)<-colnames(dobicek)
 
-ggplot(drzave)
+profit <- data.frame(year = names(profit), t(profit))
+
+p<-ggplot(data=profit,aes(y=Electronic.Gaming,x =year),color="red")+geom_point()+geom_point(aes(y=Punto.Banco,x=year),color="blue")
+          
 
