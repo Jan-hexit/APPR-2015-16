@@ -8,7 +8,7 @@ output:
       in_header: lib/styles.sty
 ---
 
-```{r setup, echo=FALSE, results='hide', message=FALSE}
+```{r setup, echo=FALSE, results='hide', message=FALSE,warning=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
 # in sledimo navodilom v programu.
 #source("fontconfig.r", encoding = "UTF-8")
@@ -19,30 +19,25 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Za temo sem izbral kazinoje v Združenem Kraljestvu. Analiziral bom njihove dobičke in porast le teh. Analizo bom naredil na različnih nivojih kot so regije, tazlične igre itd.. Tema mi je zanimiva ker me je vedno zanimal zaslužek kazinojev in ali so bili kdaj izkoriščani. Tema je zanimiva ker te lahko spodbudi da ne zahajaš v kazinoje.
 
 ***
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo=FALSE,message=False, warning=FALSE}
-source("uvoz/uvoz.r", encoding = "UTF-8")
+Uvozil sem podatke iz strani http://www.gamblingcommission.gov.uk/Gambling-data-analysis/statistics/Industry-statistics.aspx  v obliki CSV. Podatki so bili zelo slabo struktorirani ob uvozu zato sem za čiščenje porabil kar nekaj časa. 2 del podatkov sem dobil še iz strani http://www.gamblingcommission.gov.uk/Gambling-data-analysis/statistics/Casino-drop-and-win-data.aspx a so bili v obliki PDF ki sem jo potem pretvoril v HTML in sem iz tam uvozil podatke.
+
+```{r dobiček,echo=FALSE}
+kable(vlozki)
+G_profit
+G_dobicek
 ```
+V prvi tabeli so prokazani vložki v miljonih funtov po različnih kategorijah iger. V vložke je štet denar ki so ga ljudje vložili v avtomate oz žetone ne glede če so nato igrali z njim ali ne. 1 graf prikazuje dobičke kazinojev glede na različne kategorije 2-gi graf pa prikazuje dobiček v % glede na vložek.
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
-
-```{r razpredelnice}
-kable(head(druzine))
-head(obcine)
+```{r profitabilnost, echo=FALSE, fig.align='center',}
+kable(st_miz)
+G_dobicek_na_mizo
 ```
-
-Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-hist(obcine[,4], main = "Pogostost števila naselij",
-     xlab = "Število naselij", ylab = "Število občin")
-```
-
+Prva tabela prikazuje št. miz oz avtomatov in s tem nekako njihovo popularnost. Graf pa prikazuje dobiček na mizo za posamezne panoge.
 ***
 

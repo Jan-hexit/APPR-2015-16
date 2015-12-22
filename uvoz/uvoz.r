@@ -1,23 +1,4 @@
-# # 2. faza: Uvoz podatkov
-# 
-# # Funkcija, ki uvozi podatke iz datoteke druzine.csv
-# uvozi.druzine <- function() {
-#   return(read.table("podatki/druzine.csv", sep = ";", as.is = TRUE,
-#                       row.names = 1,
-#                       col.names = c("obcina", "en", "dva", "tri", "stiri"),
-#                       fileEncoding = "Windows-1250"))
-# }
-# 
-# # Zapišimo podatke v razpredelnico druzine.
-# druzine <- uvozi.druzine()
-# 
-# obcine <- uvozi.obcine()
-# 
-# # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
-# # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
-# # datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
-# # 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
-# # fazah.
+
 require(dplyr)
 require(rvest)
 require(gsubfn)
@@ -100,12 +81,12 @@ colnames(st_miz)<-colnames(dobicek)
 
 profit <- t(profit)
 G_profit <- melt(profit[,-9],id=row.names(profit))
-G_profit <- ggplot(data=G_profit,aes(x=Var1,y=value,color=Var2))+geom_point()
+G_profit <- ggplot(data=G_profit,aes(x=as.numeric(Var1),y=value,color=Var2))+geom_line()+ylab("Milijon £")+xlim(rownames(profit))+xlab("Leta")+ggtitle("Dobički")
 
 dobicek <- t(dobicek)
 G_dobicek <- melt(dobicek[,-9],id=row.names(dobicek))
-G_dobicek <- ggplot(data=G_dobicek,aes(x=Var1,y=value,color=Var2))+geom_point()
+G_dobicek <- ggplot(data=G_dobicek,aes(x=as.numeric(Var1),y=value*100,color=Var2))+geom_line()+ylab("% dobička glede na vložek")+xlim(rownames(dobicek))+xlab("Leta")+ggtitle("Dobički v %")
 
 dobicek_na_mizo <- t(dobicek_na_mizo)
 G_dobicek_na_mizo <- melt(dobicek_na_mizo[,-9],id=row.names(dobicek_na_mizo))
-G_dobicek_na_mizo <- ggplot(data=G_dobicek_na_mizo,aes(x=as.numeric(Var1),y=value,color=Var2))+geom_line()+ylab("Milijon £")+xlim(rownames(dobicek_na_mizo))+xlab("Leta")
+G_dobicek_na_mizo <- ggplot(data=G_dobicek_na_mizo,aes(x=as.numeric(Var1),y=value,color=Var2))+geom_line()+ylab("Milijon £")+xlim(rownames(dobicek_na_mizo))+xlab("Leta")+ggtitle("Dobički na mizo")
