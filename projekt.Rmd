@@ -27,7 +27,7 @@ Za temo sem izbral kazinoje v Združenem Kraljestvu. Analiziral bom njihove dobi
 
 Uvozil sem podatke iz strani http://www.gamblingcommission.gov.uk/Gambling-data-analysis/statistics/Industry-statistics.aspx  v obliki CSV. Podatki so bili zelo slabo struktorirani ob uvozu zato sem za čiščenje porabil kar nekaj časa. 2 del podatkov sem dobil še iz strani http://www.gamblingcommission.gov.uk/Gambling-data-analysis/statistics/Casino-drop-and-win-data.aspx a so bili v obliki PDF ki sem jo potem pretvoril v HTML in sem iz tam uvozil podatke.
 
-```{r dobiček,echo=FALSE}
+```{r dobicek,echo=FALSE}
 kable(vlozki)
 G_profit
 G_dobicek
