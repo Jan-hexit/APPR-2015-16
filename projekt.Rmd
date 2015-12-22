@@ -27,17 +27,17 @@ Za temo sem izbral kazinoje v Združenem Kraljestvu. Analiziral bom njihove dobi
 
 Uvozil sem podatke iz strani http://www.gamblingcommission.gov.uk/Gambling-data-analysis/statistics/Industry-statistics.aspx  v obliki CSV. Podatki so bili zelo slabo struktorirani ob uvozu zato sem za čiščenje porabil kar nekaj časa. 2 del podatkov sem dobil še iz strani http://www.gamblingcommission.gov.uk/Gambling-data-analysis/statistics/Casino-drop-and-win-data.aspx a so bili v obliki PDF ki sem jo potem pretvoril v HTML in sem iz tam uvozil podatke.
 
-```{r dobicek,echo=FALSE}
+```{r dobicek,echo=FALSE,warning=FALSE}
 kable(vlozki)
 G_profit
 G_dobicek
 ```
 V prvi tabeli so prokazani vložki v miljonih funtov po različnih kategorijah iger. V vložke je štet denar ki so ga ljudje vložili v avtomate oz žetone ne glede če so nato igrali z njim ali ne. 1 graf prikazuje dobičke kazinojev glede na različne kategorije 2-gi graf pa prikazuje dobiček v % glede na vložek.
 
-```{r profitabilnost, echo=FALSE, fig.align='center',}
+```{r profitabilnost, echo=FALSE, fig.align='center',warning=FALSE}
 kable(st_miz)
 G_dobicek_na_mizo
 ```
 Prva tabela prikazuje št. miz oz avtomatov in s tem nekako njihovo popularnost. Graf pa prikazuje dobiček na mizo za posamezne panoge.
-***
+
 
