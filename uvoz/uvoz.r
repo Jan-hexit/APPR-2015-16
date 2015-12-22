@@ -16,7 +16,7 @@ tabela<-t(tabela)
 url <- "podatki/Drop-and-win-summary-report.htm"
 stran <-read_html(url,encoding="UTF-8")
 drzave <- stran %>% html_nodes(xpath ="//table[1]") %>% .[[2]] %>% html_table(fill = TRUE)
-drzave <- apply(drzave,2,function(x) gsub("^[^0-9]{2}$",NA,x))
+drzave <- apply(drzave,2,function(x) gsub("^[^0-9]{1,2}$",NA,x))
 drzave <- drzave[!apply(is.na(drzave), 1, all),]
 drzave <- drzave[,!apply(is.na(drzave), 2, all)]
 drzave <- data.frame(drzave, stringsAsFactors = FALSE)
