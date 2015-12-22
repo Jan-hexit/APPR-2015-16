@@ -98,8 +98,14 @@ colnames(dobicek_na_mizo)<-colnames(st_miz)
 st_miz <- data.frame(st_miz)
 colnames(st_miz)<-colnames(dobicek)
 
-profit <- data.frame(year = names(profit), t(profit))
+profit <- t(profit)
+G_profit <- melt(profit[,-9],id=row.names(profit))
+G_profit <- ggplot(data=G_profit,aes(x=Var1,y=value,color=Var2))+geom_point()
 
-p<-ggplot(data=profit,aes(y=Electronic.Gaming,x =year),color="red")+geom_point()+geom_point(aes(y=Punto.Banco,x=year),color="blue")
-          
+dobicek <- t(dobicek)
+G_dobicek <- melt(dobicek[,-9],id=row.names(dobicek))
+G_dobicek <- ggplot(data=G_dobicek,aes(x=Var1,y=value,color=Var2))+geom_point()
 
+dobicek_na_mizo <- t(dobicek_na_mizo)
+G_dobicek_na_mizo <- melt(dobicek_na_mizo[,-9],id=row.names(dobicek_na_mizo))
+G_dobicek_na_mizo <- ggplot(data=G_dobicek_na_mizo,aes(x=as.numeric(Var1),y=value,color=Var2))+geom_line()+ylab("Milijon £")+xlim(rownames(dobicek_na_mizo))+xlab("Leta")
