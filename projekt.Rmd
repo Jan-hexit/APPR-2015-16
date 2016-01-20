@@ -45,5 +45,5 @@ Prva tabela prikazuje št. miz oz avtomatov in s tem nekako njihovo popularnost.
 kable(drzave[-2])
 zemljevid
 ```
-
+Zanimivost je da v 6-tih prestižnih kazinojih ljudje vložijo več denarja kot v 21 drugih.Druga zanimiva stvar je da se v Londonu vloživeč kot 2x denarja kot v vseh ostalih provincah skupaj.
 

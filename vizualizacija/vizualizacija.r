@@ -16,6 +16,7 @@ pretvori.zemljevid <- function(zemljevid) {
 podatki<-drzave[c(2,3,4,8),]
 podatki$regija <- factor(row.names(podatki))
 podatki<-podatki[c(3,6)]
+podatki[1]<-podatki[1]/1000000
 podatki <- as.data.frame(podatki)
 zemljevid$regija <- zemljevid$NAME %>%
 {gsub("East of England|South East|South West","South", .)} %>%
@@ -28,6 +29,6 @@ zemljevid$regija <- zemljevid$NAME %>%
 zemljevid <- pretvori.zemljevid(zemljevid)
 
 zemljevid <- ggplot() + geom_polygon(data = right_join(podatki,zemljevid),
-                        aes(x = long, y = lat, group = group, fill = Drop))
+                        aes(x = long, y = lat, group = group, fill = Drop)) + scale_fill_distiller(palette = "Spectral")+ggtitle("Vlozki v miljon £")
 
 
