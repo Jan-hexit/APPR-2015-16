@@ -36,7 +36,7 @@ G_dobicek
 V prvi tabeli so prokazani vložki v miljonih funtov po različnih kategorijah iger. V vložke je štet denar ki so ga ljudje vložili v avtomate oz žetone ne glede če so nato igrali z njim ali ne. 1 graf prikazuje dobičke kazinojev glede na različne kategorije 2-gi graf pa prikazuje dobiček v % glede na vložek.
 
 ```{r profitabilnost, echo=FALSE, fig.align='center',warning=FALSE}
-kable(st_miz)
+kable(head(prikaz))
 G_dobicek_na_mizo
 ```
 Prva tabela prikazuje št. miz oz avtomatov in s tem nekako njihovo popularnost. Graf pa prikazuje dobiček na mizo za posamezne panoge.
@@ -45,5 +45,5 @@ Prva tabela prikazuje št. miz oz avtomatov in s tem nekako njihovo popularnost.
 kable(drzave[-2])
 zemljevid
 ```
-Zanimivost je da v 6-tih prestižnih kazinojih ljudje vložijo več denarja kot v 21 drugih.Druga zanimiva stvar je da se v Londonu vloživeč kot 2x denarja kot v vseh ostalih provincah skupaj.
+Zanimivost je da v 6-tih prestižnih kazinojih ljudje vložijo več denarja kot v 21 drugih.Druga zanimiva stvar je da se v Londonu vloživeč kot 2x denarja kot v vseh ostalih provincah.
 
