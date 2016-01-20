@@ -41,4 +41,9 @@ G_dobicek_na_mizo
 ```
 Prva tabela prikazuje št. miz oz avtomatov in s tem nekako njihovo popularnost. Graf pa prikazuje dobiček na mizo za posamezne panoge.
 
+```{r regije, echo=FALSE, fig.align='center',warning=FALSE}
+kable(drzave[-2])
+zemljevid
+```
+
 

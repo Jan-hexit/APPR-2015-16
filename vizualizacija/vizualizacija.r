@@ -13,16 +13,21 @@ pretvori.zemljevid <- function(zemljevid) {
   data <- zemljevid@data
   data$id <- as.character(0:(nrow(data)-1))
   return(inner_join(fo, data, by="id"))}
+podatki<-drzave[c(2,3,4,8),]
+podatki$regija <- factor(row.names(podatki))
+podatki<-podatki[c(3,6)]
+podatki <- as.data.frame(podatki)
+zemljevid$regija <- zemljevid$NAME %>%
+{gsub("East of England|South East|South West","South", .)} %>%
+{gsub("Greater London Authority","London total", .)} %>%
+{gsub("North East|North West|Yorkshire and The Humber","North", .)} %>%
+{gsub("East Midlands|West Midlands","Midlands and Wales", .)} %>%
+  factor(levels = levels(podatki$regija))
+#zemljevid<- merge(x=drzave,y=zemljevid,by="regija")
+#zemljevid <- zemljevid[c(3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,1,2)]
+zemljevid <- pretvori.zemljevid(zemljevid)
 
- zemljevid <- pretvori.zemljevid(zemljevid)
- zemljevid <- apply(zemljevid,2,function(x) gsub("East of England|South East|South West","South",x))
- zemljevid <- apply(zemljevid,2,function(x) gsub("Greater London Authority","London total",x))
- zemljevid <- apply(zemljevid,2,function(x) gsub("North East|North West|Yorkshire and The Humber","North",x))
- zemljevid <- apply(zemljevid,2,function(x) gsub("East Midlands|West Midlands","Midlands and Wales",x))
- drzave=drzave[c(-5,-6,-7,-9),]
- drzave$imena<-rownames(drzave)
+zemljevid <- ggplot() + geom_polygon(data = right_join(podatki,zemljevid),
+                        aes(x = long, y = lat, group = group, fill = Drop))
 
 
- 
- ggplot() + geom_polygon(data = drzave %>% right_join(zemljevid, by = c("imena" = "NAME")),aes(x = long, y = lat, group = group, fill = Drop))
-print(zemljevid)

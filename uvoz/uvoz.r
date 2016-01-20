@@ -34,6 +34,8 @@ colnames(drzave)<-drzave[1,]
 drzave<-drzave[-1,]
 rownames(drzave)<- drzave[,1]
 drzave<-drzave[,-1]
+drzave[3]<-as.numeric(drzave[,3])
+drzave<-data.frame(drzave)
 
 tabela <- read.csv(file="podatki/Industry-Statistics-April-2008-to-March-2015.csv",sep = ";",skip=6,nrows=54, as.is=TRUE)
 tabela <- tabela[1:8]
