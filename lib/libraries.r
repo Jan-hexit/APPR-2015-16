@@ -4,7 +4,7 @@ require(rvest)
 require(gsubfn)
 library(reshape2)
 library(ggplot2)
-
+library(mgcv)
 # Uvozimo funkcije za delo z datotekami XML.
 source("lib/xml.r", encoding = "UTF-8")
 
