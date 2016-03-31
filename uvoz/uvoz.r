@@ -93,3 +93,4 @@ dobicek_na_mizo <- t(dobicek_na_mizo)
 G_dobicek_na_mizo <- melt(dobicek_na_mizo[,-9],id=row.names(dobicek_na_mizo))
 prikaz <- G_dobicek_na_mizo
 G_dobicek_na_mizo <- ggplot(data=G_dobicek_na_mizo,aes(x=as.numeric(Var1),y=value,color=Var2))+geom_line()+ylab("Milijon £")+xlim(rownames(dobicek_na_mizo))+xlab("Leta")+ggtitle("Dobički na mizo")
+profit<-data.frame(profit)

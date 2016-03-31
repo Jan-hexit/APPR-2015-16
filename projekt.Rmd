@@ -47,3 +47,9 @@ zemljevid
 ```
 Zanimivost je da v 6-tih prestižnih kazinojih ljudje vložijo več denarja kot v 21 drugih.Druga zanimiva stvar je da se v Londonu vloživeč kot 2x denarja kot v vseh ostalih provincah.
 
+#Napredna Analiza
+Tu si lahko ogledamo povezave med različnimi panogami igralništva in kako dobiček v eni vpliva na drugo.
+```{r analiza, echo=FALSE, fig.align='center',warning=FALSE}
+shinyAppDir("shiny", options=list(width="100%", height=550))
+```
+
